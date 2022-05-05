@@ -9,7 +9,7 @@
           <!-- /.row row-cols-5 -->
           </div>
           <!-- /.control -->
-          <div v-else class="d-flex justify-content-center align-items-center">
+          <div v-else class="d-flex justify-content-center align-items-center text-white">
               <h1>Loading...😴</h1>
           </div>
       </div>
@@ -53,5 +53,6 @@ export default {
 <style lang="scss" scoped>
 main {
     background-color: #1E2D3B ;
+    height: calc(100vh - 80px);
 }
 </style>
