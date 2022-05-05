@@ -1,11 +1,17 @@
 <template>
   <main class="py-5">
       <div class="container">
-          <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 align-items-center justify-content-center">
+          <div class="control" v-if="Success">
+              <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 align-items-center justify-content-center">
               <AlbumList :Album="Album" v-for="(Album, index) in Albums" :key="index"/>
               
           </div>
           <!-- /.row row-cols-5 -->
+          </div>
+          <!-- /.control -->
+          <div v-else class="d-flex justify-content-center align-items-center">
+              <h1>Loading...😴</h1>
+          </div>
       </div>
       <!-- /.container -->
   </main>
