@@ -54,7 +54,7 @@ export default {
             return  this.Albums.filter(Album => {
                 console.log('album.genre = ' + ' ' + Album.genre.toLowerCase());
                 console.log('genSelected = ' + ' ' + state.genSelected );
-                Album.genre.toLowerCase().includes(state.genSelected)
+                return Album.genre.toLowerCase().includes(state.genSelected)
             })
        } else {
            return this.Albums
