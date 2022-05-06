@@ -20,7 +20,7 @@
 <script>
 import axios from 'axios';
 import AlbumList from '@/components/AlbumListComponent.vue';
-
+import state from "@/state.js";
 export default {
     name: 'SiteMain',
     components: {
@@ -46,13 +46,19 @@ export default {
     },
     mounted() {
         this.callApi();
+    },
+    computed: {
+    filtered() {
+      return this.Albums.filter(Album => {
+          Album.genre.toLowerCase() === state.genSelected
+      })
     }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 main {
     background-color: #1E2D3B ;
-    height: calc(100vh - 80px);
 }
 </style>

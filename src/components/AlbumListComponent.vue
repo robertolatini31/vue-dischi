@@ -12,11 +12,13 @@
 </template>
 
 <script>
+
 export default {
   name: "AlbumListComponent",
   props: {
       Album: Object,
-  }
+  },
+  
 };
 </script>
 
