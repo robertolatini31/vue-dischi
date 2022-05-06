@@ -4,6 +4,7 @@
     v-on:input="$emit('input', $event.target.value)"
     @change="$emit('selectChange', genSelected)">
         <option value="" disabled selected>Scegli Genere</option>
+        <option value="">All</option>
         <option value="jazz">Jazz</option>
         <option value="metal">Metal</option>
         <option value="pop">Pop</option>

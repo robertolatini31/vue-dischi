@@ -50,13 +50,22 @@ export default {
     computed: {
     filteredArray() {
         
-       if (state.genSelected.length > 0) {
+       if (state.genSelected.length > 0 && state.artistSelected.length == 0) {
             return  this.Albums.filter(Album => {
-                console.log('album.genre = ' + ' ' + Album.genre.toLowerCase());
-                console.log('genSelected = ' + ' ' + state.genSelected );
+                //console.log('album.genre = ' + ' ' + Album.genre.toLowerCase());
+                //console.log('genSelected = ' + ' ' + state.genSelected );
                 return Album.genre.toLowerCase().includes(state.genSelected)
             })
-       } else {
+       } else if (state.genSelected.length == 0 && state.artistSelected.length > 0) {
+           return  this.Albums.filter(Album => {
+            return Album.author.toLowerCase().includes(state.artistSelected)
+           })
+       } else if (state.genSelected.length > 0 && state.artistSelected.length > 0) {
+           return  this.Albums.filter(Album => {
+           return Album.author.toLowerCase().includes(state.artistSelected) && Album.genre.toLowerCase().includes(state.genSelected)
+           })
+       }
+       else {
            return this.Albums
        }
          
