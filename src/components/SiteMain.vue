@@ -3,7 +3,7 @@
       <div class="container">
           <div class="control" v-if="Success">
               <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 align-items-center justify-content-center">
-              <AlbumList :Album="Album" v-for="(Album, index) in Albums" :key="index"/>
+              <AlbumList :Album="Album" v-for="(Album, index) in filtered" :key="index"/>
               
           </div>
           <!-- /.row row-cols-5 -->
@@ -49,11 +49,16 @@ export default {
     },
     computed: {
     filtered() {
-      return this.Albums.filter(Album => {
-          Album.genre.toLowerCase() === state.genSelected
-      })
+          if (state.genSelected.length > 0) {
+              return this.Albums.filter(Album => {
+              Album.genre.toLowerCase() === state.genSelected
+                })
+            } else {
+                return this.Albums
+            }
+   
+        }
     }
-  }
 }
 </script>
 
