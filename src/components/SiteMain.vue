@@ -1,12 +1,15 @@
 <template>
   <main class="py-5">
       <div class="container">
-          <div class="control" v-if="Success">
-              <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 align-items-center justify-content-center">
-              <AlbumList :Album="Album" v-for="(Album, index) in filteredArray" :key="index"/>
-              
+          <div class="vh-100 d-flex align-items-center justify-content-center" v-if="filteredArray.length == 0">
+              <h1 class="me-4 text-white">Nessun Risultato</h1>
+              <button type="button" class="btn btn-success" @click="reset">Reset</button>
           </div>
-          <!-- /.row row-cols-5 -->
+          <div class="control" v-if="Success">
+            <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 align-items-center justify-content-center">
+            <AlbumList :Album="Album" v-for="(Album, index) in filteredArray" :key="index"/>
+            </div>
+            <!-- /.row row-cols-5 -->
           </div>
           <!-- /.control -->
           <div v-else class="d-flex justify-content-center align-items-center text-white">
@@ -43,6 +46,10 @@ export default {
                 console.log(error);
             })
         },
+        reset() {
+            state.genSelected = '';
+            state.artistSelected = '';
+        }
     },
     mounted() {
         this.callApi();
@@ -68,10 +75,6 @@ export default {
        else {
            return this.Albums
        }
-         
-             
-          
-   
         }
     }
 }
@@ -80,5 +83,10 @@ export default {
 <style lang="scss" scoped>
 main {
     background-color: #1E2D3B ;
+    button {
+    border-color: #1ed760 !important;
+    background-color: transparent;
+    color: #1ed760 !important;
+  }
 }
 </style>
