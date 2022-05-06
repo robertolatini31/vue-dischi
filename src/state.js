@@ -1,7 +1,9 @@
 import Vue from 'vue';
 
 const state = Vue.observable({
-    genSelected: ''
+    genSelected: '',
+    newArray: []
 });
+
 
 export default state;

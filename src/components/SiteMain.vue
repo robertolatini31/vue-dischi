@@ -3,7 +3,7 @@
       <div class="container">
           <div class="control" v-if="Success">
               <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 align-items-center justify-content-center">
-              <AlbumList :Album="Album" v-for="(Album, index) in filtered" :key="index"/>
+              <AlbumList :Album="Album" v-for="(Album, index) in filteredArray" :key="index"/>
               
           </div>
           <!-- /.row row-cols-5 -->
@@ -48,14 +48,20 @@ export default {
         this.callApi();
     },
     computed: {
-    filtered() {
-          if (state.genSelected.length > 0) {
-              return this.Albums.filter(Album => {
-              Album.genre.toLowerCase() === state.genSelected
-                })
-            } else {
-                return this.Albums
-            }
+    filteredArray() {
+        
+       if (state.genSelected.length > 0) {
+            return  this.Albums.filter(Album => {
+                console.log('album.genre = ' + ' ' + Album.genre.toLowerCase());
+                console.log('genSelected = ' + ' ' + state.genSelected );
+                Album.genre.toLowerCase().includes(state.genSelected)
+            })
+       } else {
+           return this.Albums
+       }
+         
+             
+          
    
         }
     }
